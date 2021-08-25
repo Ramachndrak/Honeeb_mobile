@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+                <ion-button  slot="end">
+                    <ion-icon name="cart-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    <ion-title class="capitalize">{{PageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs #tabs (ionTabsDidChange)="setTitle()">
+    <ion-tab-bar slot="bottom">
+
+      <ion-tab-button  selected-tab="standard" tab="explore">
+          <ion-icon name="search-circle-outline"></ion-icon>
+        <ion-label>Explore</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="superhoney">
+          <ion-icon name="card-outline"></ion-icon>
+        <ion-label>Super Honey</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="bimate">
+          <ion-icon name="cart-outline"></ion-icon>
+        <ion-label>Bi - Mate</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="myaccount">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>My Account</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+    
+    </ion-tabs>
+</ion-content>

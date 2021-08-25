@@ -1,0 +1,196 @@
+
+<ion-header>
+    <ion-toolbar >
+          <ion-searchbar placeholder="search 10,000+ products"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card>
+    
+      <ion-slides pager="true" autoplay="2000" loop="true">
+          <ion-slide>
+              <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <div>
+                          <img src="../assets/kid.jpg" />
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div>
+                        <h3>
+                          Exciting offers on 
+                        </h3>
+                        <h1>
+                           KIDS WEAR
+                        </h1>
+                          <div>
+                              <ion-button>SHOP NOW</ion-button>
+                             </div>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+              </ion-grid>
+            </ion-slide>
+
+            <ion-slide>
+                <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <div>
+                            <img src="../assets/kid.jpg" />  
+                        </div>
+                      </ion-col>
+                      <ion-col>
+                        <div>
+                          <h3>
+                            Exciting offers on 
+                          </h3>
+                          <h1>
+                             KIDS WEAR
+                          </h1>
+                            <div>
+                                <ion-button>SHOP NOW</ion-button>
+                               </div>
+                        </div>
+                      </ion-col>
+                    </ion-row>
+                </ion-grid>
+              </ion-slide>
+
+              <ion-slide>
+                  <ion-grid>
+                      <ion-row>
+                        <ion-col>
+                          <div>
+                              <img src="../assets/kid.jpg" /> 
+                          </div>
+                        </ion-col>
+                        <ion-col>
+                          <div>
+                            <h3>
+                              Exciting offers on 
+                            </h3>
+                            <h1>
+                               KIDS WEAR
+                            </h1>
+                              <div>
+                                  <ion-button>SHOP NOW</ion-button>
+                                 </div>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                  </ion-grid>
+                </ion-slide>
+      </ion-slides>
+    
+    </ion-card>
+    <!-- <ion-scroll scrollX="true" style="height: 100px;">
+       
+        <ion-card style="overflow-x: auto;" class="scroll-item" padding *ngFor="let test of filters"> 
+          - you will here dynamic list 
+
+          <ion-img [src]="test.url"></ion-img>  
+          
+           <ion-row style="font-size: 25px;">
+           <p *ngIf="test.cust_name"><b> {{test.cust_name}} </b></p>  
+          </ion-row>
+
+          <ion-row>
+            <p *ngIf="test.demo_car_id">{{test.demo_car_id[1]}}</p>
+          </ion-row>
+
+          <ion-row>
+           <p *ngIf="test.location"> {{test.location}} </p>
+          </ion-row> 
+        </ion-card>
+        
+      </ion-scroll> -->
+      <ion-card>
+          <ion-card-title>Today's deals</ion-card-title>
+         
+           <ion-button style="position: absolute; right: 0; margin-top: -20px;">Viewall</ion-button>
+          <div style = "margin-top: 30px;">
+          <ion-slides   [options]="slideOpts">
+              <ion-slide *ngFor="let pcategory of products_category">
+                  <div>
+                  <ion-img class="slider-img"[src]="pcategory.images[0]?.src"></ion-img>
+                  <p class="addnew-user">{{pcategory.name}}</p>
+                  </div>
+              </ion-slide>
+              </ion-slides>
+            </div>
+      <!-- <ion-scroll scrollX="true" style="height: 100px;">
+        <ion-list>
+            <ion-list-header>
+                <ion-label>Today's deals</ion-label>
+                <ion-label text-right>view all</ion-label>
+          </ion-list-header>
+          <ion-item  style="overflow-x: auto;">
+  
+            <div class="paddedimg" *ngFor="let deals of todayDeals">
+              <ion-img class="today_deals" [src]="deals.url"></ion-img>
+              <p class="addnew-user">{{deals.name}}</p>
+            </div> -->
+  
+            <!-- <ion-avatar *ngIf="master.getRoleID() == master.adminRoleID" item-start (click)="addnewTeacher()">
+              <img src="{{master.addNewTeacherImage}}">
+              <p class="addnew-user-main">Add New</p>
+            </ion-avatar> -->
+  
+          <!-- </ion-item>
+        </ion-list>
+        </ion-scroll> -->
+      </ion-card>
+    <ion-card >
+      <ion-card-title>Categories</ion-card-title>
+    
+      <ion-button style="position: absolute; right: 0; margin-top: -20px;" (click)="viewallCategories()">Viewall</ion-button>
+    
+  <div style = "margin-top: 30px;">  
+      <ion-slides   [options]="slideOpts">
+      <ion-slide *ngFor="let pcategory of products_category" (click)="getCategorieProduct(pcategory)">
+          <div>
+          <ion-img class="slider-img"[src]="pcategory.images[0]?.src"></ion-img>
+          <p class="addnew-user">{{pcategory.name}}</p>
+          </div>
+      </ion-slide>
+      </ion-slides>
+    </div>
+        <!-- <ion-scroll scrollX="true" style="height: 100px;">
+            <ion-list>
+                <ion-list-header>
+                    <ion-label>Categories</ion-label>
+                    <ion-label side= "right">view all</ion-label>
+              </ion-list-header>
+              <ion-item  style="overflow-x: auto;">
+      
+                <div class="paddedimg" *ngFor="let pcategory of products_category">
+                  <ion-img [src]="pcategory.image?.src"></ion-img>
+                  <p class="addnew-user">{{pcategory.name}}</p>
+                </div>
+      
+              </ion-item>
+            </ion-list>
+            </ion-scroll> -->
+      </ion-card>
+          <ion-card>
+            <ion-card-title>Continue shopping</ion-card-title>
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                      <ion-img src="../assets/shopeing.jpg"></ion-img>  
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <p>SSS women's top</p>
+                  <p>Rs : 190.00</p>
+                  <ion-button side= "right"> ADD </ion-button>
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+          </ion-card>
+          
+</ion-content>

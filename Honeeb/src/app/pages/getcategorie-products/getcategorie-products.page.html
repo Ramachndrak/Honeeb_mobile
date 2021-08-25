@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button  slot="end" (click)="seachbar()">
+                <ion-icon name="search"></ion-icon>
+                </ion-button>
+                <ion-button  (click)="openCart()"slot="end">
+                    <div class="cart-length">{{ cartItemCount | async }}</div>
+                    <ion-icon name="cart-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    <ion-title>{{getproducts_category.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor="let p of getproducts_category.images; let i = index; let f=first; let l=last;">
+        <ion-item *ngIf="i == 0" >
+            <ion-thumbnail slot="start">
+              <ion-img [src]="p.src"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{p.name}}</h2>
+              <h3>&#2352;{{getproducts_category.price}}</h3>
+              <h3>&#2352;<del>{{getproducts_category.regular_price}}</del></h3>
+              <div *ngIf="rate==0">
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                </div>
+                <div *ngIf="rate==1">
+                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                </div>
+                <div *ngIf="rate==2">
+                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                </div>
+              
+                <div *ngIf="rate==3">
+                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                </div>
+                <div *ngIf="rate==4">
+                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                </div>
+                <div *ngIf="rate==5">
+                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="primary" name="star" (click)="onRate(5)"></ion-icon>
+                </div>
+                
+            </ion-label>
+            
+            <div *ngIf= "cartItemCount.value == 0" >
+                <ion-button (click)= "addToCart(getproducts_category)"style=" padding-right: 20px;  position: absolute; right: 0;">
+                    ADD</ion-button>
+            </div>
+            <div *ngIf= "cartItemCount.value != 0">
+                <ion-grid>
+                    <ion-row>
+                      <ion-col col-4>
+                          <ion-button (click)= "increaseCartItem(getproducts_category)">
+                              <ion-icon name="add"></ion-icon></ion-button>
+                      </ion-col>
+                      <ion-col col-4>
+                          <p>{{ cartItemCount | async }}<p>
+                      </ion-col>
+                      <ion-col col-4>
+                          <ion-button (click)= "decreaseCartItem(getproducts_category)">
+                              <ion-icon name="remove"></ion-icon></ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                    <!-- <ion-row class="ion-align-items-center"> 
+                      <ion-col col-6 class="ion-align-self-center">
+                         
+                       </ion-col>
+                       <ion-col col-6 class="ion-align-self-center">
+                          <p>{{ cartItemCount | async }}<p>
+                        </ion-col>
+                        <ion-col col-6 class="ion-align-self-center">
+                       
+                          </ion-col>
+                        </ion-row> -->
+                    
+            </div>
+            
+          </ion-item>
+      </ion-list>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col col-6>
+                    <ion-button (click)= "filtersTapped()">
+                        <ion-icon name="funnel"></ion-icon> Filters</ion-button>
+                </ion-col>
+              <ion-col col-6>
+                  <ion-button (click)= "sortTapped()">
+                      <ion-icon name="funnel"></ion-icon> Sort</ion-button>
+              </ion-col>
+            </ion-row>
+              </ion-grid>
+    </ion-toolbar>
+  </ion-footer>

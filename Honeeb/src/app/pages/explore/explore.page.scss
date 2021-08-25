@@ -1,0 +1,30 @@
+
+.toolbar-background {
+  color: #017EC0;
+}
+ion-scroll[scrollX] {
+  white-space: nowrap;
+  .scroll-item {
+  display: inline-block;
+  }
+}
+// ion-img {
+//   height:100px;
+//   width: 100px;
+// }
+// .today_deals
+// {
+//  height:100px;
+//   width: 200px;
+//   border-block-color: black;
+// }
+.card{
+  //margin: 0 !important;
+ // width: 0 !important;
+  width: 300px;
+
+}
+.paddedimg {
+  padding-left: 10px;
+  padding-right: 10px;
+}

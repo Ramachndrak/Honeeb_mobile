@@ -1,0 +1,102 @@
+
+
+<ion-content>
+  <ion-row>
+    <ion-col col-3>
+      <img src="">
+    </ion-col>
+    <ion-col col-9>
+      <ion-label>John Deo</ion-label>
+      <p>John.deo@gmail.com</p>
+      <ion-row>
+        <ion-col col-6>
+          <ion-button (click)="complete_profile()" color="light">Complete Profile</ion-button>
+        </ion-col>
+        <ion-col col-6>
+          <ion-button (click)="logout()" color="primary">Logout</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-card>
+    <ion-row>
+      <ion-col col-6>
+        <ion-label>Your recent orders</ion-label>
+      </ion-col>
+      <ion-col col-6>
+        <ion-label>View all</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-list>
+      <ion-item *ngFor="let orders of recentOrders">
+        <ion-row>
+          <ion-col col-6>
+            <ion-label>{{orders.id}}</ion-label>
+          </ion-col>
+          <ion-col col-6>
+            <ion-label>{{orders.date}}</ion-label>
+          </ion-col>
+          <ion-row>
+            <ion-col col-5>
+              <img src="">
+            </ion-col>
+            <ion-col col-7>
+              <ion-label>{{orders.name}}</ion-label>
+              <p>{{orders.price}}</p>
+              <p>{{orders.delivery_at_present}}</p>
+            </ion-col>
+          </ion-row>
+          
+
+        </ion-row>
+       
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card>
+    <ion-row>
+      <ion-col col-6>
+        <ion-label>Your wishlist(10)</ion-label>
+      </ion-col>
+      <ion-col col-6>
+        <ion-label>View all</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-list>
+      <ion-item *ngFor="let orders of wishlist">
+          <ion-row>
+            <ion-col col-5>
+              <img src="">
+            </ion-col>
+            <ion-col col-7>
+              <ion-label>{{orders.name}}</ion-label>
+              <p>{{orders.price}}</p>
+              <p>{{orders.original_price}}</p>
+            </ion-col>
+        </ion-row>
+       <ion-button color="light">Add</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card>
+    <ion-row>
+      <ion-col col-2>
+        <img src="">
+      </ion-col>
+      <ion-col col-6>
+        <ion-label>SUPER HONEY</ion-label>
+        <p>Expires in 2 months</p>
+      </ion-col>
+      <ion-col col-4>
+        <ion-label>$200.00</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-label>Your default address</ion-label>
+    <ion-label>Pruhvi Raj</ion-label>
+    <p>1-1-1-234, Info city, Hitech City</p>
+    <p>500089</p>
+    <ion-button color="primary">change</ion-button>
+  </ion-card>
+</ion-content>

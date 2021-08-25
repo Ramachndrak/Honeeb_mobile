@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <h3>Default address</h3>
+    <ion-button (click)="autoDetectAddress()"> AUTO DETECT LOCATION </ion-button>
+  </div>
+  <form (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()" [formGroup]="validateForm">
+    <div >
+       
+        <ion-item>
+            <ion-input class="log_input" formControlName="userName" placeholder="User Name" id="username"
+                       [(ngModel)]="userName" (keyup.enter)="onSubmit()"></ion-input>
+        </ion-item>
+        <div *ngIf="validateForm.get('userName').invalid && (isValid)">
+            <p class="validtnMsg" *ngIf="validateForm.get('userName').hasError('required')">*Name is
+                required</p>
+            <p class="validtnMsg"
+               *ngIf="validateForm.get('userName').hasError('pattern') && !validateForm.get('userName').hasError('required') && validateForm.value.userName.length>4">
+                *Please enter name</p>
+        </div>
+        <ion-item>                           
+            <ion-input class="log_input" formControlName="address1" type="{{type}}" id="address1"
+                       placeholder="Address Line 1" [(ngModel)]="address1" (keyup.enter)="onSubmit()"></ion-input>                                   
+        </ion-item>
+        <div *ngIf="validateForm.get('address1').invalid && (isValid)">
+            <p class="validtnMsg" *ngIf="validateForm.get('address1').hasError('required')"> *Address Line 1
+                is required
+            </p>
+        </div>
+        <ion-item>                           
+          <ion-input class="log_input" formControlName="address2" type="{{type}}" id="address2"
+                     placeholder="Address Line 2" [(ngModel)]="address2" (keyup.enter)="onSubmit()"></ion-input>                                   
+      </ion-item>
+      <div *ngIf="validateForm.get('address2').invalid && (isValid)">
+          <p class="validtnMsg" *ngIf="validateForm.get('address2').hasError('required')"> *Address Line 2
+              is required
+          </p>
+      </div>
+      <ion-item>                           
+        <ion-input class="log_input" formControlName="pincode" type="{{type}}" id="pincode"
+                   placeholder="Pincode" [(ngModel)]="pincode" (keyup.enter)="onSubmit()"></ion-input>                                   
+    </ion-item>
+    <div *ngIf="validateForm.get('pincode').invalid && (isValid)">
+        <p class="validtnMsg" *ngIf="validateForm.get('pincode').hasError('required')"> *Pincode is required
+        </p>
+    </div>
+    <ion-item>                           
+      <ion-input class="log_input" formControlName="landmark" type="{{type}}" id="landmark"
+                 placeholder="Landmark" [(ngModel)]="landmark" (keyup.enter)="onSubmit()"></ion-input>                                   
+  </ion-item>
+  <div *ngIf="validateForm.get('landmark').invalid && (isValid)">
+      <p class="validtnMsg" *ngIf="validateForm.get('landmark').hasError('required')"> *Landmark is required
+      </p>
+  </div>
+        <ion-button type="submit" (keyup.enter)="onSubmit()">Submit</ion-button>
+    </div>
+</form>
+</ion-content>

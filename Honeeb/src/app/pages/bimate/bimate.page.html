@@ -1,0 +1,38 @@
+
+
+<ion-content>
+  <ion-card>
+    <p>what is Bi-Mate</p>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+  </ion-card>
+  <ion-card>
+    <ion-searchbar placeholder="Ask Bi-Mate"></ion-searchbar>
+    <ion-item *ngFor="let product of productDetails">
+      <img src="/assets/kid.jpg">
+      <ion-row>
+        <ion-col col-8>
+          <p>{{product.name}}</p>
+        </ion-col>
+        <ion-col col-4>
+          <p>{{product.price}}</p>
+        </ion-col>
+      </ion-row>
+      <p>{{product.reached}}</p>
+      <p>{{product.header}}</p>
+      <p>{{product.description}}</p>
+      <ion-button color="light" >View product</ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-card>
+    <ion-row>
+      <ion-col col-3>
+        <img src="/assets/discount.jpg">
+      </ion-col>
+      <ion-col col-9>
+        <ion-label>Want to grow your business</ion-label>
+        <p>Become a seller today</p>
+        <ion-button color="light">know more</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

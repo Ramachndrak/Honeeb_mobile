@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="my-toolbar">
+    <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+          <ion-button  slot="end" (click)="seachbar()">
+              <ion-icon name="search"></ion-icon>
+              </ion-button>
+              <ion-button  slot="end">
+                  <ion-icon name="cart-outline"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      
+      <ion-title>Categories</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+  <ion-row >
+    <ion-col size-lg="3" size-md="4" size-sm="6" size="3" *ngFor="let pcategory of products_category">
+      <div>
+          <ion-img class="slider-img"[src]="pcategory.images[0]?.src"></ion-img>
+          <p class="addnew-user">{{pcategory.name}}</p>
+      </div>
+    </ion-col>
+ </ion-row>
+</ion-grid>
+</ion-content>
