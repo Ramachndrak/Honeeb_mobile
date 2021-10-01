@@ -55,6 +55,26 @@ const routes: Routes = [
     path: 'auto-detect-address',
     loadChildren: () => import('./pages/auto-detect-address/auto-detect-address.module').then( m => m.AutoDetectAddressPageModule)
   },
+  {
+    path: 'otpverification',
+    loadChildren: () => import('./pages/otpverification/otpverification.module').then( m => m.OtpverificationPageModule)
+  },
+  {
+    path: 'productdetail',
+    loadChildren: () => import('./pages/productdetail/productdetail.module').then( m => m.ProductdetailPageModule)
+  },
+  {
+    path: 'filtersand-sort',
+    loadChildren: () => import('./pages/filtersand-sort/filtersand-sort.module').then( m => m.FiltersandSortPageModule)
+  },
+  {
+    path: 'myorders',
+    loadChildren: () => import('./pages/myorders/myorders.module').then( m => m.MyordersPageModule)
+  },
+  {
+    path: 'wishlist',
+    loadChildren: () => import('./pages/wishlist/wishlist.module').then( m => m.WishlistPageModule)
+  },
 ];
 
 @NgModule({

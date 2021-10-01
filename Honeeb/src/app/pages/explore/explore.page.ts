@@ -44,7 +44,7 @@ export class ExplorePage implements OnInit {
    {
      
        this.loader.showLoading('ifOfLoading')
-    this.WooCommerce.getAsync("products").then((data) => {
+    this.WooCommerce.getAsync("products/categories").then((data) => {
       
       this.zone.run(() => {
         this.products_category = JSON.parse(data.body);

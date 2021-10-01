@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="type == 'filters'">Filters</ion-title>
+    <ion-title *ngIf="type == 'sort'">Sort</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div *ngIf="type == 'filters'">
+    <ion-row>
+     <ion-col> 
+      <p>{{Filters}}</p>
+      <p>Price range</p>
+      <ion-chip>
+        <ion-label>All</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>0-250</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>250-500</ion-label>
+      </ion-chip>
+      <p>Size</p>
+      <ion-chip>
+        <ion-label>All</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>L</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>M</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>XL</ion-label>
+      </ion-chip>
+      <p>Review</p>
+      <ion-chip>
+        <ion-label>All</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>1.0</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>2.0</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>3.0</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>4.0</ion-label>
+      </ion-chip>
+     </ion-col>
+    </ion-row>
+  
+</div>
+
+<div *ngIf="type == 'sort'">
+
+    <ion-row>
+     <ion-col> 
+      <p>{{Sort}}</p>
+      <p>Price</p>
+      <ion-chip>
+        <ion-label>High-Low</ion-label>
+      </ion-chip>
+      <ion-chip>
+        <ion-label>Low-High</ion-label>
+      </ion-chip>
+     
+     </ion-col>
+    </ion-row>
+ 
+  
+</div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar *ngIf="type == 'sort'">
+        <ion-grid>
+            <ion-row>
+                <ion-col col-6>
+                  <ion-button (click)= "checkoutTapped()">
+                    RESET</ion-button>
+                </ion-col>
+              <ion-col col-6>
+                  <ion-button (click)= "checkoutTapped()">
+                      APPLY</ion-button>
+              </ion-col>
+            </ion-row>
+              </ion-grid>
+    </ion-toolbar>
+
+
+    <ion-toolbar *ngIf="type == 'filters'">
+      <ion-grid>
+          <ion-row>
+              <ion-col col-6>
+                <ion-button (click)= "checkoutTapped()">
+                  RESET</ion-button>
+              </ion-col>
+            <ion-col col-6>
+                <ion-button (click)= "checkoutTapped()">
+                    APPLY</ion-button>
+            </ion-col>
+          </ion-row>
+            </ion-grid>
+          </ion-toolbar>
+  </ion-footer>

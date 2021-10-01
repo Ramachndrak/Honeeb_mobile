@@ -1,34 +1,32 @@
 
-<ion-header>
+<ion-header class="ex-header">
     <ion-toolbar >
-          <ion-searchbar placeholder="search 10,000+ products"></ion-searchbar>
+          <ion-searchbar placeholder="Search 10,000+ products"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
 
-<ion-content>
-  <ion-card>
+<ion-content id="explore-page">
+  <ion-card class="ion-no-padding ion-no-margin">
     
-      <ion-slides pager="true" autoplay="2000" loop="true">
+      <ion-slides pager="true" autoplay="2000" loop="true" class="ex-slides">
           <ion-slide>
               <ion-grid>
                   <ion-row>
                     <ion-col>
                       <div>
-                          <img src="../assets/kid.jpg" />
+                          <img src="../assets/imgs/Kid-1.png" />
                       </div>
                     </ion-col>
                     <ion-col>
-                      <div>
+                      
                         <h3>
-                          Exciting offers on 
+                          Exciting offers on <span>KIDS WEAR</span> 
                         </h3>
-                        <h1>
-                           KIDS WEAR
-                        </h1>
-                          <div>
+                      
+                        
                               <ion-button>SHOP NOW</ion-button>
-                             </div>
-                      </div>
+                             
+
                     </ion-col>
                   </ion-row>
               </ion-grid>
@@ -107,15 +105,14 @@
         </ion-card>
         
       </ion-scroll> -->
-      <ion-card>
-          <ion-card-title>Today's deals</ion-card-title>
+      <ion-card class="Today-dl">
+          <ion-card-title>Today's deals<span>View all</span></ion-card-title>
          
-           <ion-button style="position: absolute; right: 0; margin-top: -20px;">Viewall</ion-button>
           <div style = "margin-top: 30px;">
           <ion-slides   [options]="slideOpts">
               <ion-slide *ngFor="let pcategory of products_category">
                   <div>
-                  <ion-img class="slider-img"[src]="pcategory.images[0]?.src"></ion-img>
+                  <ion-img class="slider-img"[src]="pcategory.image?.src"></ion-img>
                   <p class="addnew-user">{{pcategory.name}}</p>
                   </div>
               </ion-slide>
@@ -143,16 +140,17 @@
         </ion-list>
         </ion-scroll> -->
       </ion-card>
-    <ion-card >
-      <ion-card-title>Categories</ion-card-title>
-    
-      <ion-button style="position: absolute; right: 0; margin-top: -20px;" (click)="viewallCategories()">Viewall</ion-button>
+    <ion-card class="Categories">
+      
+              <ion-card-title (click)="viewallCategories()">Categories<span>View all</span></ion-card-title>
+
+      <!--<ion-button style="position: absolute; right: 0; margin-top: -20px;" (click)="viewallCategories()">Viewall</ion-button>-->
     
   <div style = "margin-top: 30px;">  
       <ion-slides   [options]="slideOpts">
       <ion-slide *ngFor="let pcategory of products_category" (click)="getCategorieProduct(pcategory)">
           <div>
-          <ion-img class="slider-img"[src]="pcategory.images[0]?.src"></ion-img>
+          <ion-img class="slider-img"[src]="pcategory.image?.src"></ion-img>
           <p class="addnew-user">{{pcategory.name}}</p>
           </div>
       </ion-slide>
@@ -174,8 +172,8 @@
               </ion-item>
             </ion-list>
             </ion-scroll> -->
-      </ion-card>
-          <ion-card>
+      </ion-card >
+          <ion-card class="cont-shp">
             <ion-card-title>Continue shopping</ion-card-title>
           <ion-grid>
               <ion-row>

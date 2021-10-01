@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-signupwithmobileno',
   templateUrl: './signupwithmobileno.page.html',
@@ -7,12 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupwithmobilenoPage implements OnInit {
 
-  constructor() { }
-
+  mobileNO = ""
+  isSignup = false
+ 
+  constructor(private router:Router) { }
+  
   ngOnInit() {
   }
   signupWithno()
   {
-    
+  this.isSignup = true
+  this.router.navigate(['./otpverification']);
   }
-}
+  verified()
+  {
+  this.router.navigate(['./otpverification']);
+  }
+}  
+

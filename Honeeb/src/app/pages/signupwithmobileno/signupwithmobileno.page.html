@@ -7,16 +7,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="signupwithmobileno">
   <div class="doitlaterdiv">
     <h2>One step away</h2>
-    <p>Enter your mobile number and authenticate with otp</p>
+    <p class="p">Enter your mobile number and authenticate with OTP</p>
   <div >
       <ion-item>
           <ion-label position="floating">Mobile Number</ion-label>
           <ion-input></ion-input>
         </ion-item>
-    <ion-button class="button"  (click)="signupWithno()">SIGNUP WITH MOBILE NUMBER</ion-button>
+    <ion-button class="button"  expand="full" (click)="signupWithno()" class="button-round">SEND OTP</ion-button>
   </div>
   </div>
 </ion-content>

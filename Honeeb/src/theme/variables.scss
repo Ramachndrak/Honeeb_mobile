@@ -3,13 +3,14 @@
 
 /** Ionic CSS Variables **/
 :root {
+
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #00A6F4;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #00537a;
+  --ion-color-primary-tint: #1aaff5;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -74,6 +75,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+   /** backb-utton 
+  ion-back-button {
+    --color:#00A6F4 ;
+  }**/
+  ion-toolbar{
+     --background:#00A6F4!important ;    
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -225,4 +234,77 @@
 
     --ion-tab-bar-background: #1f1f1f;
   }
+
+
+
 }
+
+ /** font **/
+
+
+@font-face {   
+  font-family: 'Roboto-reg';  //Font for entire App 
+  src: url('../assets/fonts/Roboto-Regular.ttf');
+}
+ion-content{ 
+font-family:Roboto-reg !important;
+
+}
+
+ /** signup **/
+.signup-page .button-white{
+--ion-color-primary: #fff;
+border-radius:5px!important;
+--height:48px!important;
+--box-shadow: 0 3px 6px #00000019!important;
+--border-radius: 5px!important;
+margin:0 8% 8% 8%!important;
+}
+.signup-page .button-white:hover{
+--background: #fff!important;
+
+}
+.signup-page .button-white img{
+  --ion-height:10px;
+  --ion-width:10px;
+}
+.signup-page .md .button-white{
+ letter-spacing:0!important;
+}
+/** button**/
+.signup-page, .signupwithmobileno{
+ion-button{
+      --border-radius: 4px!important;
+      --box-shadow: 0 3px 6px #00000019!important;
+       letter-spacing:0.03em;
+       --font-size:14px;
+       height:44px;
+}
+
+}
+
+/**header and toolbar**/
+
+/* Show background if class is active */
+.show-background {
+    border-style: none;
+    background: var(--ion-color-primary);
+}
+
+/* Remove bottom border on md */
+.header-md::after {
+    background-image: none;
+}
+
+/* Remove bottom border on ios */
+.header-ios ion-toolbar:last-child {
+    --border-width: 0;
+}
+
+.swiper-pagination {
+right: -48% !important;
+
+text-align:right;
+
+}
+

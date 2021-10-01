@@ -8,7 +8,7 @@
                 <ion-icon name="search"></ion-icon>
                 </ion-button>
                 <ion-button  (click)="openCart()"slot="end">
-                    <div class="cart-length">{{ cartItemCount | async }}</div>
+                    <div *ngIf= "cartItemCount != 0 " class="cart-length">{{ cartItemCount }}</div>
                     <ion-icon name="cart-outline"></ion-icon>
             </ion-button>
         </ion-buttons>
@@ -17,15 +17,15 @@
 </ion-header>
 
 <ion-content>
-    <ion-list *ngFor="let p of getproducts_category.images; let i = index; let f=first; let l=last;">
-        <ion-item *ngIf="i == 0" >
-            <ion-thumbnail slot="start">
-              <ion-img [src]="p.src"></ion-img>
+    <ion-list *ngFor="let p of getproducts_category; let i = index; let f=first; let l=last;">
+        <ion-item >
+            <ion-thumbnail slot="start"  (click)="productDetails(p)">
+              <ion-img [src]="p.images[0].src"></ion-img>
             </ion-thumbnail>
-            <ion-label>
+            <ion-label  (click)="productDetails(p)">
               <h2>{{p.name}}</h2>
-              <h3>&#2352;{{getproducts_category.price}}</h3>
-              <h3>&#2352;<del>{{getproducts_category.regular_price}}</del></h3>
+              <h3>&#2352;{{p.price}}</h3>
+              <!-- <h3>&#2352;<del>{{getproducts_category.regular_price}}</del></h3> -->
               <div *ngIf="rate==0">
                   <ion-icon color="primary" name="star-outline" (click)="onRate(1)"></ion-icon>
                   <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
@@ -72,23 +72,23 @@
                 
             </ion-label>
             
-            <div *ngIf= "cartItemCount.value == 0" >
-                <ion-button (click)= "addToCart(getproducts_category)"style=" padding-right: 20px;  position: absolute; right: 0;">
+            <div *ngIf= "p.quantityInCart == 0" >
+                <ion-button (click)= "addToCart(p,i)"style=" padding-right: 20px;  position: absolute; right: 0;">
                     ADD</ion-button>
             </div>
-            <div *ngIf= "cartItemCount.value != 0">
+            <div *ngIf= "p.quantityInCart != 0" >
                 <ion-grid>
                     <ion-row>
                       <ion-col col-4>
-                          <ion-button (click)= "increaseCartItem(getproducts_category)">
-                              <ion-icon name="add"></ion-icon></ion-button>
+                        <ion-button (click)= "decreaseCartItem(p,i)">
+                          <ion-icon name="remove"></ion-icon></ion-button>
                       </ion-col>
                       <ion-col col-4>
-                          <p>{{ cartItemCount | async }}<p>
+                          <p>{{ p.quantityInCart }}<p>
                       </ion-col>
                       <ion-col col-4>
-                          <ion-button (click)= "decreaseCartItem(getproducts_category)">
-                              <ion-icon name="remove"></ion-icon></ion-button>
+                        <ion-button (click)= "increaseCartItem(p,i)">
+                          <ion-icon name="add"></ion-icon></ion-button>
                       </ion-col>
                     </ion-row>
                   </ion-grid>

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header> -->
 
-<ion-content>
+<!-- <ion-content>
   <div class="doitlaterdiv">
     <p (click)="doitlaterTapped()" class="p">DO IT LATER   <ion-icon name="arrow-forward-outline"></ion-icon></p>
   </div>
@@ -19,6 +19,26 @@
   <ion-button><ion-icon name="logo-google"></ion-icon></ion-button>
   <ion-button><ion-icon name="logo-facebook"></ion-icon></ion-button>
   <p class="text">Already have an account? Login</p>
+</div>
+</div>
+</ion-content> -->
+
+<ion-content class="signup-page ">
+  <div class="doitlaterdiv">
+    <p (click)="doitlaterTapped()" class="dot-p p">DO IT LATER   <ion-icon name="arrow-forward-outline"></ion-icon></p>
+  </div>
+  <div class="dtl">
+    <h2>Welcome</h2>
+    <p class="dtl-p">Start your journy by setting up an account</p>
+  <div class="btn-radius">
+    <ion-button expand="full" (click)="signupWithno()" class="button-round">SIGNUP WITH MOBILE NUMBER</ion-button>
+  </div>
+<P class="or"><span>OR</span></P>
+<div class="wrapper">
+  <ion-button class="button-white"><img src="../assets/imgs/google.svg" height="80%" width="80%"/></ion-button>
+  <ion-button class="button-white"><img src="../assets/imgs/facebook.svg" height="80%" width="80%"/></ion-button>
+  <p class="text" (click)="login()">Already have an account? <span
+    >Login</span></p>
 </div>
 </div>
 </ion-content>

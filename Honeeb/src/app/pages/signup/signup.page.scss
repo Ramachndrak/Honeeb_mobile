@@ -1,11 +1,16 @@
+ion-content{ 
+
+font-family:Roboto-reg !important;
+ padding-left: 34px!important;
+    padding-right: 34px !important;
+
+}
+
 .doitlaterdiv
 {
-    margin-top:50px;
-    //margin-right: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
-    position: relative;
-    float: right;
+    margin-top:20%;
+    text-align: right;
+    margin-right:10%;
 }
 .p{
     color: #008CBA;
@@ -13,6 +18,8 @@
 }
 .text {
     text-align: center;
+    font-size:14px;
+    margin-top:20%;
   }
 .buttons
 {
@@ -20,16 +27,55 @@
     
 } 
 h2{
-    color: #008CBA;
+    color: #00A6F4;
+    font-size:32px;
+    font-weight:bold;
+    padding-bottom:14px;
 }
 .wrapper {
     text-align: center;
-    display: inline-block;
-    position: absolute;
-    margin-top:20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    // top: 50%;
-    // left: 50%;
+   margin:25% auto 25% auto!important;
   } 
+.wrapper .md .button-solid,.wrapper .ios .button-solid {background:#fff!important;padding:5px;}
+.md .button,.ios .button{
+    height:44px;
+    border-radius:5px!important;
+    box-shadow: 0 3px 6px #00000019!important;
+    font-size:14px;
+}
+.dot-p{
+    font-weight:bold;
+    font-size:14px;
+      color:var(--ion-color-primary);
+    ion-icon{
+        margin-left:5px;
+        vertical-align:middle;
+    }
+}
+.dtl{
+     margin:25% 8% 10% 8%;
+}
+.dtl-p{
+    padding-right:25%;
+    line-height:20px; 
+    font-size:14px;
+    padding-bottom:25px;
+     margin:0;  
+}
+.text span{
+    color:var(--ion-color-primary);
+    font-weight:bold;
+}
+.or {
+   width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid rgba(0,0,0,0.1); 
+   line-height: 0.1em;
+   margin: 14% 0;
+   font-weight:bold;
+} 
 
+.or span { 
+    background:#fff; 
+    padding:0 10px; 
+}

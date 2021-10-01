@@ -28,3 +28,104 @@ ion-scroll[scrollX] {
   padding-left: 10px;
   padding-right: 10px;
 }
+ion-searchbar{
+  
+  --background:#fff;
+  --border-radius:10px;
+  --box-shadow:0 3px 6px #00000019!important;
+}
+ion-header ion-toolbar{
+   --background:var(--ion-color-primary)!important;
+    border-radius:0 0 10px 10px;
+
+}
+.ex-header{
+    --background:var(--ion-color-primary)!important;
+}
+.header-md::after,.header-ios::after{
+  background-image:transparent!important;
+}
+.ex-slides h3{
+  font-size:16px;
+  color:#000!important;
+  text-align:left;
+}
+.ex-slides ion-card{
+  padding:0;
+ion-button{
+  height:30px;
+  margin-left:0;
+}
+
+}
+
+ion-card{
+  
+  box-shadow:0 3px 10px #00000029;
+}
+.Today-dl{
+padding:0;margin:10px 0;border-radius:0;
+ion-card-title{
+padding:16px 16px 0 16px;
+  font-size:16px;
+  span{
+  float:right;
+  color:#000;
+  font-weight:normal;
+  font-size:14px;
+  text-align:right!important;
+  }
+}
+ion-slide{
+  width:33%!important;
+  ion-img{
+  height:50px!important;
+  width:100px!important;
+  }
+}
+.addnew-user{
+  font-size:12px;
+}
+
+}
+.Categories{
+padding:0;margin:10px 0;border-radius:0;
+ion-card-title{
+padding:16px 16px 0 16px;
+  font-size:16px;
+  span{
+  float:right;
+  color:#000;
+  font-weight:normal;
+  font-size:14px;
+  text-align:right!important;
+  }
+}
+ion-slide{
+  width:33%!important;
+  ion-img{
+  height:50px!important;
+  width:100px!important;
+  }
+}
+.addnew-user{
+  font-size:12px;
+}
+
+}
+
+.cont-shp{
+ padding:0;margin:10px 0;border-radius:0;
+ion-card-title{
+padding:16px 16px 0 16px;
+  font-size:16px;
+  span{
+  float:right;
+  color:#000;
+  font-weight:normal;
+  font-size:14px;
+  text-align:right!important;
+  }
+} 
+
+}

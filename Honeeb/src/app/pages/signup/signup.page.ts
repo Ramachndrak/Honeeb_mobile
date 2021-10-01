@@ -20,5 +20,9 @@ export class SignupPage implements OnInit {
   {
     this.router.navigate(['./signupwithmobileno']);
   }
+  login()
+  {
+    this.router.navigate(['./login']);
+  }
 
 }
