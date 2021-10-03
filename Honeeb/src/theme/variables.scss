@@ -11,7 +11,7 @@
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #00537a;
   --ion-color-primary-tint: #1aaff5;
-
+  --ion-color-yellow:#ffc409;
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
   --ion-color-secondary-rgb: 61, 194, 255;
@@ -308,3 +308,14 @@ text-align:right;
 
 }
 
+ion-toolbar {
+
+.button-native{
+  
+  color:#fff!important;
+}
+ion-title{
+  
+  font-size:16px!important;
+}
+}

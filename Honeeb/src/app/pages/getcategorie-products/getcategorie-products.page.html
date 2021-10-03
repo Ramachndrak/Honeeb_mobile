@@ -16,9 +16,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-list *ngFor="let p of getproducts_category; let i = index; let f=first; let l=last;">
-        <ion-item >
+<ion-content class="cat-pdl">
+    <ion-list >
+        <ion-item lines="none" *ngFor="let p of getproducts_category; let i = index; let f=first; let l=last;">
             <ion-thumbnail slot="start"  (click)="productDetails(p)">
               <ion-img [src]="p.images[0].src"></ion-img>
             </ion-thumbnail>
@@ -26,54 +26,54 @@
               <h2>{{p.name}}</h2>
               <h3>&#2352;{{p.price}}</h3>
               <!-- <h3>&#2352;<del>{{getproducts_category.regular_price}}</del></h3> -->
-              <div *ngIf="rate==0">
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(1)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+              <div *ngIf="rate==0" class="rat-pdl">
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(5)"></ion-icon>
                 </div>
-                <div *ngIf="rate==1">
-                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(2)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                <div *ngIf="rate==1"  class="rat-pdl">
+                  <ion-icon color="yellow" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(5)"></ion-icon>
                 </div>
-                <div *ngIf="rate==2">
-                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(3)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                <div *ngIf="rate==2"  class="rat-pdl">
+                  <ion-icon color="yellow" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(5)"></ion-icon>
                 </div>
               
-                <div *ngIf="rate==3">
-                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(4)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                <div *ngIf="rate==3" class="rat-pdl">
+                  <ion-icon color="yellow" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(5)"></ion-icon>
                 </div>
-                <div *ngIf="rate==4">
-                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(4)"></ion-icon>
-                  <ion-icon color="primary" name="star-outline" (click)="onRate(5)"></ion-icon>
+                <div *ngIf="rate==4"  class="rat-pdl">
+                  <ion-icon color="yellow" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="yellow" name="star-outline" (click)="onRate(5)"></ion-icon>
                 </div>
-                <div *ngIf="rate==5">
-                  <ion-icon color="primary" name="star" (click)="onRate(1)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(2)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(3)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(4)"></ion-icon>
-                  <ion-icon color="primary" name="star" (click)="onRate(5)"></ion-icon>
+                <div *ngIf="rate==5"  class="rat-pdl">
+                  <ion-icon color="yellow" name="star" (click)="onRate(1)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(2)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(3)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(4)"></ion-icon>
+                  <ion-icon color="yellow" name="star" (click)="onRate(5)"></ion-icon>
                 </div>
                 
             </ion-label>
             
             <div *ngIf= "p.quantityInCart == 0" >
-                <ion-button (click)= "addToCart(p,i)"style=" padding-right: 20px;  position: absolute; right: 0;">
+                <ion-button (click)= "addToCart(p,i)">
                     ADD</ion-button>
             </div>
             <div *ngIf= "p.quantityInCart != 0" >

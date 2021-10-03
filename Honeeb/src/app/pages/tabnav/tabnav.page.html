@@ -12,27 +12,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="tabbar-cnt">
   <ion-tabs #tabs (ionTabsDidChange)="setTitle()">
     <ion-tab-bar slot="bottom">
 
       <ion-tab-button  selected-tab="standard" tab="explore">
-          <ion-icon name="search-circle-outline"></ion-icon>
+       <!--    <ion-icon name="search-circle-outline"></ion-icon> -->
+       <img src="../assets/imgs/Explore-tab-bar-act.svg"/>
         <ion-label>Explore</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="superhoney">
-          <ion-icon name="card-outline"></ion-icon>
+        <!--   <ion-icon name="card-outline"></ion-icon> -->
+             <img src="../assets/imgs/Supr-h-ina-tab-bar.svg"/>
         <ion-label>Super Honey</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="bimate">
-          <ion-icon name="cart-outline"></ion-icon>
+          <!-- <ion-icon name="cart-outline"></ion-icon> -->
+               <img src="../assets/imgs/Bi-Mate-ina-tab-bar.svg"/>
         <ion-label>Bi - Mate</ion-label>
       </ion-tab-button>
 
       <ion-tab-button tab="myaccount">
-          <ion-icon name="person-circle-outline"></ion-icon>
+        <!--   <ion-icon name="person-circle-outline"></ion-icon> -->
+             <img src="../assets/imgs/Myaccount-ina.svg"/>
         <ion-label>My Account</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
