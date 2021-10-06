@@ -19,11 +19,15 @@ export class SignupwithmobilenoPage implements OnInit {
   signupWithno()
   {
   this.isSignup = true
-  this.router.navigate(['./otpverification']);
+  // this.router.navigate(['./otpverification']);
   }
   verified()
   {
   this.router.navigate(['./otpverification']);
+  }
+  resend()
+  {
+    
   }
 }  
 

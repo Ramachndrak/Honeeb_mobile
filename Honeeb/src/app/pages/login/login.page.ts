@@ -2,9 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { map} from 'rxjs/operators';
 import { WoocommerceProvider } from 'src/providers/woocommerce/woocommerce';
 import { UtilsProvider } from 'src/utils/utils';
-
+const REQUEST_TIMEOUT: number = 50000;
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,6 +15,7 @@ export class LoginPage implements OnInit {
   username = "";
   password = "";
   WooCommerce: any;
+  userLoginData:any;
   constructor(public http: HttpClient,public alertCtrl: UtilsProvider,private router:Router,private WP: WoocommerceProvider) {
     this.WooCommerce = WP.init();
    }
@@ -86,23 +88,31 @@ export class LoginPage implements OnInit {
   // }
   login()
   {
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
+     
+    // this.http.get("https://honeebi.com/wp-json/custom-plugin/login?username="+this.username+"&password="+this.password,{
+    //   headers: new HttpHeaders({
+    //       'Content-Type': 'application/json'
+    //   }),observe: 'response'}).pipe(
+    //   map((response) => {
+    //       // return response;
+    //       console.log("login data",response);
+    //       //     this.userLoginData = result[0].data
+    //       //     localStorage.setItem("loginData",JSON.stringify(this.userLoginData))
+    //   }));
+    
+     this.http.get("https://honeebi.com/wp-json/custom-plugin/login?username="+this.username+"&password="+this.password)
+      .subscribe(result => {
+        console.log("login data object",result);
+        var stringJson = JSON.stringify(result)
+        this.userLoginData = JSON.parse(stringJson);
+        console.log("login data json",this.userLoginData.data);
+        localStorage.setItem("loginData",JSON.stringify(this.userLoginData.data))
+        localStorage.setItem('isLoggedIn', 'true');
+        this.router.navigate(['./tabnav/explore']);
+       }, error => {
+        console.log(error);
       });
-      const userData = `username=${this.username}&password=${this.password}`; 
-      const url = 'http://honeebi.com';
-      return new Promise((resolve, reject) => {
-        this.http
-          .post(`${url}/wp-json/jwt-auth/v3/token`, userData, { headers })
-          .subscribe(
-            res => {
-              resolve(res);
-            },
-            err => {
-              resolve(err);
-            }
-          );
-      });
+
   }
   signup()
   {

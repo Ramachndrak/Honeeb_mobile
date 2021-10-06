@@ -8,7 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class MyaccountPage implements OnInit {
   recentOrders:any = [{}]
   wishlist:any = [{}]
-  constructor() { }
+  loggedIn_userdata: any;
+  isLoggedIn: string;
+  userName :string = ""
+  email :string = ""
+  constructor() {
+     this.isLoggedIn = localStorage.getItem('isLoggedIn');
+     if(this.isLoggedIn == 'true')
+     {
+      this.loggedIn_userdata = JSON.parse(localStorage.getItem("loginData"));
+      this.userName = this.loggedIn_userdata.user_login
+      this.email = this.loggedIn_userdata.user_email
+     }
+   
+   }
 
   ngOnInit() {
   }
@@ -33,5 +46,12 @@ export class MyaccountPage implements OnInit {
 
     }]
   }
+  completeprofile()
+  {
 
+  }
+  logout()
+  {
+
+  }
 }

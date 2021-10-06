@@ -5,12 +5,12 @@
     <ion-col col-3>
       <img src="">
     </ion-col>
-    <ion-col col-9>
-      <ion-label>John Deo</ion-label>
-      <p>John.deo@gmail.com</p>
-      <ion-row>
+    <ion-col isLoggedIn = 'true' col-9>
+      <ion-label>{{userName}}</ion-label>
+      <p>{{email}}</p>
+      <ion-row isLoggedIn = 'false' >
         <ion-col col-6>
-          <ion-button (click)="complete_profile()" color="light">Complete Profile</ion-button>
+          <ion-button (click)="completeprofile()" color="light">Complete Profile</ion-button>
         </ion-col>
         <ion-col col-6>
           <ion-button (click)="logout()" color="primary">Logout</ion-button>

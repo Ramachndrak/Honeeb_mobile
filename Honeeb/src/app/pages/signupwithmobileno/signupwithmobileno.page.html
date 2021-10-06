@@ -11,12 +11,39 @@
   <div class="doitlaterdiv">
     <h2>One step away</h2>
     <p class="p">Enter your mobile number and authenticate with OTP</p>
-  <div >
+  <div  *ngIf="isSignup == false">
       <ion-item>
           <ion-label position="floating">Mobile Number</ion-label>
           <ion-input></ion-input>
         </ion-item>
     <ion-button class="button"  expand="full" (click)="signupWithno()" class="button-round">SEND OTP</ion-button>
   </div>
+  <div  *ngIf="isSignup == true">
+    <ion-item>
+        <ion-label position="floating">Mobile Number</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">OTP</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+  <!-- <ion-button class="button"  expand="full" (click)="signupWithno()" class="button-round">SEND OTP</ion-button> -->
+</div>
   </div>
 </ion-content>
+<ion-footer *ngIf="isSignup == true">
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row>
+              <ion-col col-6>
+                  <ion-button (click)= "resend()">
+                       30sec</ion-button>
+              </ion-col>
+            <ion-col col-6>
+                <ion-button (click)= "verified()">
+                     VERIFY</ion-button>
+            </ion-col>
+          </ion-row>
+            </ion-grid>
+  </ion-toolbar>
+</ion-footer>

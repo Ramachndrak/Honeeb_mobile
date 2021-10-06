@@ -1,16 +1,39 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import {Platform} from '@ionic/angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoadingControllerProvider } from 'src/loading-controller/loading-controller';
 import { WoocommerceProvider } from 'src/providers/woocommerce/woocommerce';
 import { UtilsProvider } from 'src/utils/utils';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator/ngx';
+import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
+declare var google;
 @Component({
   selector: 'app-otpverification',
   templateUrl: './otpverification.page.html',
   styleUrls: ['./otpverification.page.scss'],
 })
 export class OtpverificationPage implements OnInit {
+  map : any;
+  marker : any;
+  latitude : any = "";
+  longitude : any = "";
+  timestap : any = "";
+  pageTitle: string;
+  latLngBounds: any;
+  infowindow: any;
+  facilitieDetails: any;
+  latitude_details: any;
+  latitudeforopenGmap:number ;
+  longitudeforopenGmap:number ;
+  location = {
+    'latitude': 0,
+    'longitude': 0,
+    'address': '',
+    'displayAddress': '',
+  };
    WooCommerce: any;
    signup_link = "wp-json/wc/v3/customers";
   userName: string = '';
@@ -21,25 +44,142 @@ export class OtpverificationPage implements OnInit {
   address2: string = '';
   pincode: string = '';
   landmark: string = '';
+  state : string = '';
   validateForm: FormGroup;
   isValid: boolean = false;
-  constructor(private router:Router,private _fb: FormBuilder,private WP: WoocommerceProvider, private utls: UtilsProvider,
-    private loader: LoadingControllerProvider, private http: HttpClient,
+  userCity: any;
+  latLngResult: any;
+  userLocationFromLatLng: NativeGeocoderResult;
+  userLocation: any;
+  lat: string;
+  lng: string;
+  isGetLocation : boolean = false;
+  constructor(public platform : Platform,public geolocation: Geolocation,private launchNavigator: LaunchNavigator,private router:Router,private _fb: FormBuilder,private WP: WoocommerceProvider, private utls: UtilsProvider,
+    private loader: LoadingControllerProvider, private http: HttpClient,private nativeGeocoder: NativeGeocoder,
     private zone: NgZone) {
       this.WooCommerce = WP.init();
+    //   this.platform.ready().then(()=>{
+    //     var mapoptions = {
+    //       center:{},
+    //       zoom :7
+    //     }
+    //     this.map = new google.maps.Map(document.getElementById("map"),mapoptions)
+    //   })
+    //   this.geolocation.getCurrentPosition().then(position =>{
+    //     this.latitudeforopenGmap = position.coords.latitude;
+    //     this.longitudeforopenGmap = position.coords.longitude;
+    //     console.log(position)
+    //     console.log('lat',position.coords.latitude)
+    //     console.log('long',position.coords.longitude)
+    // },error=>{
+    //     console.log('error',error);
+    // });
+      //  this.initializeApp()
+       
     this.validateForm = this._fb.group({
       userName: new FormControl('', [Validators.required, Validators.pattern(''),Validators.minLength(3), Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
-      password: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(''),]),
+      password: new FormControl('', [Validators.required, Validators.pattern('')]),
       mobile: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
       address1: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
       address2: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
       pincode: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
-      landmark: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
+      landmark: new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(6), Validators.maxLength(6)]),
+      state:new FormControl('', [Validators.required, Validators.pattern(''), Validators.minLength(8), Validators.maxLength(15)]),
   });
   }
   ngOnInit() {
   }
+
+  navigateLocation() {
+    this.platform.ready().then(() => {
+      this.getUserLocation();
+    });
+  }
+  getUserLocation() {
+    this.loader.showLoading('get your location')
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // this.getGeoLocation(resp.coords.latitude, resp.coords.longitude)
+      if (this.platform.is('cordova')) {
+        let options: NativeGeocoderOptions = {
+          useLocale: true,
+          maxResults: 5
+        };
+        this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+          .then((result: any) => {
+            console.log(result)
+            this.loader.loadingDismiss()
+            this.userLocation = result[0]
+            this.isGetLocation = true
+            this.pincode = this.userLocation.postalCode
+            this.landmark = this.userLocation.locality
+            this.state = this.userLocation.administrativeArea
+            this.address1 = this.userLocation.thoroughfare+","+this.userLocation.areasOfInterest
+            this.address2 = this.userLocation.subAdministrativeArea+","+this.userLocation.subLocality
+            console.log(this.userLocation)
+          })
+          .catch((error: any) => console.log(error));
+      } else {
+        this.getGeoLocation(resp.coords.latitude, resp.coords.longitude)
+      }
+    }).catch((error) => {
+    });
+    // let watch = this.geolocation.watchPosition();
+    // watch.subscribe((data) => {
+    //   // data can be a set of coordinates, or an error (if an error occurred).
+    //   // data.coords.latitude
+    //   // data.coords.longitude
+    //   let options: NativeGeocoderOptions = {
+    //     useLocale: true,
+    //     maxResults: 5
+    //   };
+    //   if (this.platform.is('cordova')) {
+    //     let options: NativeGeocoderOptions = {
+    //       useLocale: true,
+    //       maxResults: 5
+    //     };
+    //     this.nativeGeocoder.reverseGeocode(data.coords.latitude, data.coords.longitude, options)
+    //       .then((result: NativeGeocoderResult[]) => {
+    //         console.log(result)
+    //         this.userLocation = result[0]
+    //         console.log(this.userLocation)
+    //       })
+    //       .catch((error: any) => console.log(error));
+    //   } else {
+    //     console.log('not cordove')
+    //     this.getGeoLocation(data.coords.latitude, data.coords.longitude)
+    //   }
+    // });
+  }
+  async getGeoLocation(lat: number, lng: number, type?) {
+    if (navigator.geolocation) {
+      let geocoder = await new google.maps.Geocoder();
+      let latlng = await new google.maps.LatLng(lat, lng);
+      let request = { latLng: latlng };
+
+      await geocoder.geocode(request, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          let result = results[0];
+          this.zone.run(() => {
+            if (result != null) {
+              this.userCity = result.formatted_address;
+              if (type === 'reverseGeocode') {
+                this.latLngResult = result.formatted_address;
+              }
+            }
+          })
+        }
+      });
+    }
+  }
+  
+
+
+
+ 
+
+    
+
   onSubmit()
     {
       this.createCustomerAPI()
@@ -164,7 +304,7 @@ export class OtpverificationPage implements OnInit {
           address_1: this.address1,
           address_2: this.address2,
           city: this.landmark,
-          state: "TS",
+          state: this.state,
           postcode: this.pincode,
           country: "IND",
           email: this.email,
@@ -177,7 +317,7 @@ export class OtpverificationPage implements OnInit {
           address_1: this.address1,
           address_2: this.address2,
           city: this.landmark,
-          state: "TS",
+          state: this.state,
           postcode: this.pincode,
           country: "IND"
         }

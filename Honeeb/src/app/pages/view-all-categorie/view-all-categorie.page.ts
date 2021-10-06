@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-all-categorie',
@@ -9,12 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 export class ViewAllCategoriePage implements OnInit {
   products_category : any = [];
 
-  constructor(private activatedroute: ActivatedRoute) { 
+  constructor(private activatedroute: ActivatedRoute,private router :Router) { 
     this.products_category = JSON.parse(this.activatedroute.snapshot.paramMap.get('categories_all'));
   }
     
 
   ngOnInit() {
+  }
+  getCategorieProduct(pcategory:any)
+  {
+    this.router.navigate(["./getcategorie-products",{"getcategorie_product":JSON.stringify(pcategory)}])
   }
 
 }

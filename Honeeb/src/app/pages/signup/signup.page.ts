@@ -14,6 +14,7 @@ export class SignupPage implements OnInit {
   }
   doitlaterTapped()
   {
+    localStorage.setItem('isLoggedIn', 'false');
     this.router.navigate(['./tabnav/explore']);
   }
   signupWithno()

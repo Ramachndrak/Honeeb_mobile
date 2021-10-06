@@ -42,7 +42,16 @@ export class AddCartPage implements OnInit {
   }
   checkoutTapped()
   {
-    this.router.navigate(["./checkout",{"categories_all":""}]) 
+    var __isLoggedIn = localStorage.getItem('isLoggedIn');
+      var loggedIn_userdata:any = JSON.parse(localStorage.getItem("loginData"));
+      if(__isLoggedIn == 'true')
+      {
+        this.router.navigate(["./checkout",{"categories_all":""}]) 
+      }
+      else
+      {
+        this.router.navigate(["./signup"]) 
+      }
   
   }
   decreaseCartItem(product,index) {

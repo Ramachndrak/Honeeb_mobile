@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>otpverification</ion-title>
+    <!-- <ion-title>otpverification</ion-title> -->
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +12,8 @@
     <h2>Hello there!</h2>
     <p>Complete your profile</p>
   </div>
-    <form (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()" [formGroup]="validateForm">
+  <ion-button (click)="navigateLocation()">AUTO DETECT LOCATION</ion-button>
+    <form *ngIf = "isGetLocation == true" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()" [formGroup]="validateForm">
       <div >
          
           <ion-item>
@@ -69,6 +73,24 @@
   </div>
 
   <ion-item>                           
+    <ion-input class="log_input" formControlName="landmark" type="{{type}}" id="mobile"
+               placeholder="City" [(ngModel)]="landmark" (keyup.enter)="onSubmit()"></ion-input>                                   
+</ion-item>
+<div *ngIf="validateForm.get('mobile').invalid && (isValid)">
+    <p class="validtnMsg" *ngIf="validateForm.get('mobile').hasError('required')"> *City is required
+    </p>
+</div>
+
+<ion-item>                           
+  <ion-input class="log_input" formControlName="state" type="{{type}}" id="state"
+             placeholder="State" [(ngModel)]="state" (keyup.enter)="onSubmit()"></ion-input>                                   
+</ion-item>
+<div *ngIf="validateForm.get('state').invalid && (isValid)">
+  <p class="validtnMsg" *ngIf="validateForm.get('state').hasError('required')"> *State is required
+  </p>
+</div>
+
+  <ion-item>                           
     <ion-input class="log_input" formControlName="pincode" type="{{type}}" id="pincode"
                placeholder="Pincode" [(ngModel)]="pincode" (keyup.enter)="onSubmit()"></ion-input>                                   
   </ion-item>
@@ -78,14 +100,7 @@
   </div>
 
 
-  <ion-item>                           
-    <ion-input class="log_input" formControlName="landmark" type="{{type}}" id="mobile"
-               placeholder="Landmark" [(ngModel)]="landmark" (keyup.enter)="onSubmit()"></ion-input>                                   
-</ion-item>
-<div *ngIf="validateForm.get('mobile').invalid && (isValid)">
-    <p class="validtnMsg" *ngIf="validateForm.get('mobile').hasError('required')"> *Landmark is required
-    </p>
-</div>
+  
 
 
 

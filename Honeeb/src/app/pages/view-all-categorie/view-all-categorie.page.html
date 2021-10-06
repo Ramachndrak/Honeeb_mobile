@@ -19,7 +19,7 @@
 <ion-content>
   <ion-grid>
   <ion-row >
-    <ion-col size-lg="3" size-md="4" size-sm="6" size="3" *ngFor="let pcategory of products_category">
+    <ion-col size-lg="3" size-md="4" size-sm="6" size="3" *ngFor="let pcategory of products_category" (click)="getCategorieProduct(pcategory)">
       <div>
           <ion-img class="slider-img"[src]="pcategory.image?.src"></ion-img>
           <p class="addnew-user">{{pcategory.name}}</p>

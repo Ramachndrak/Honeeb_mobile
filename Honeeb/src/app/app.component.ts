@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LoadingControllerProvider } from 'src/loading-controller/loading-controller';
 import { WoocommerceProvider } from 'src/providers/woocommerce/woocommerce';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -48,6 +49,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    private router: Router,
     private loader: LoadingControllerProvider,
     private WP: WoocommerceProvider,
     private zone: NgZone
@@ -61,7 +63,15 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      
+      var __isLoggedIn = localStorage.getItem('isLoggedIn');
+      var loggedIn_userdata:any = JSON.parse(localStorage.getItem("loginData"));
+      if (__isLoggedIn == 'true') {
+        this.router.navigate(['./tabnav/explore']);
+      }
+      else
+      {
+        this.router.navigateByUrl('/signup');
+      }
     });
   }
 
